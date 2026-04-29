@@ -1,6 +1,6 @@
 package com.example.orenji.data.repository
 
-import com.example.orenji.data.local.TokenStorage
+import com.example.orenji.data.local.SessionStorage
 import com.example.orenji.data.remote.api.AuthApi
 import com.example.orenji.data.remote.NetworkResult
 import com.example.orenji.domain.model.User
@@ -8,13 +8,14 @@ import com.example.orenji.domain.model.toDomain
 
 class AuthRepository(
     private val api: AuthApi,
-    private val tokenStorage: TokenStorage,
+    private val sessionStorage: SessionStorage,
 ) {
     suspend fun login(email: String, password: String): Result<User> {
         return when (val result = api.login(email, password)) {
             is NetworkResult.Success -> {
                 val user = result.data.user.toDomain()
-                tokenStorage.saveToken(result.data.token)
+                sessionStorage.saveToken(result.data.token)
+                sessionStorage.saveUser(user)
                 Result.success(user)
             }
             is NetworkResult.Error -> {
@@ -26,9 +27,14 @@ class AuthRepository(
         }
     }
 
-    suspend fun getToken(): String? = tokenStorage.getToken()
+    suspend fun getToken(): String? = sessionStorage.getToken()
 
-    suspend fun isLoggedIn(): Boolean = tokenStorage.getToken() != null
+    suspend fun getLoggedInUser(): User? = sessionStorage.getUser()
 
-    suspend fun logout() = tokenStorage.clearToken()
+    suspend fun isLoggedIn(): Boolean = sessionStorage.getToken() != null
+
+    suspend fun logout() {
+        sessionStorage.clearToken()
+        sessionStorage.clearUser()
+    }
 }

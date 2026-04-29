@@ -1,15 +1,24 @@
 package com.example.orenji.ui.auth
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.orenji.presentation.auth.AuthState
 import com.example.orenji.presentation.auth.AuthViewModel
+import com.example.orenji.ui.common.OrenJiButton
+import com.example.orenji.ui.common.OrenJiPasswordField
+import com.example.orenji.ui.common.OrenJiTextField
+import com.example.orenji.ui.theme.OrenJiTheme
+import orenji.composeapp.generated.resources.Res
+import orenji.composeapp.generated.resources.logo
+import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -57,38 +66,37 @@ fun LoginContent(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(
-            text = "OrenJi",
-            style = MaterialTheme.typography.displaySmall,
+        Image(
+            painter = painterResource(Res.drawable.logo),
+            contentDescription = "OrenJi Logo",
+            modifier = Modifier
+                .fillMaxWidth(0.6f)
+                .aspectRatio(1.5f),
+            contentScale = ContentScale.Fit,
         )
-        Spacer(Modifier.height(8.dp))
         Text(
             text = "Sign in to continue",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
 
-        Spacer(Modifier.height(40.dp))
+        Spacer(Modifier.height(10.dp))
 
-        OutlinedTextField(
+        OrenJiTextField(
             value = email,
             onValueChange = onEmailChange,
-            label = { Text("Email") },
+            label = "Email",
             modifier = Modifier.fillMaxWidth(),
-            singleLine = true,
             isError = state.error != null,
             enabled = !state.isLoading,
         )
 
         Spacer(Modifier.height(16.dp))
 
-        OutlinedTextField(
+        OrenJiPasswordField(
             value = password,
             onValueChange = onPasswordChange,
-            label = { Text("Password") },
             modifier = Modifier.fillMaxWidth(),
-            singleLine = true,
-            visualTransformation = PasswordVisualTransformation(),
             isError = state.error != null,
             enabled = !state.isLoading,
         )
@@ -105,32 +113,20 @@ fun LoginContent(
             }
         }
 
-        Spacer(Modifier.height(24.dp))
+        Spacer(Modifier.height(14.dp))
 
-        Button(
+        OrenJiButton(
+            text = "Login",
             onClick = onLoginClick,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp),
-            enabled = !state.isLoading,
-        ) {
-            if (state.isLoading) {
-                CircularProgressIndicator(
-                    modifier = Modifier.size(20.dp),
-                    strokeWidth = 2.dp,
-                    color = MaterialTheme.colorScheme.onPrimary,
-                )
-            } else {
-                Text("Login")
-            }
-        }
+            isLoading = state.isLoading,
+        )
     }
 }
 
 @Preview(showBackground = true, name = "Login - Default")
 @Composable
 fun LoginContentPreview() {
-    MaterialTheme {
+    OrenJiTheme {
         LoginContent(
             email = "",
             password = "",
@@ -145,7 +141,7 @@ fun LoginContentPreview() {
 @Preview(showBackground = true, name = "Login - Filled")
 @Composable
 fun LoginContentFilledPreview() {
-    MaterialTheme {
+    OrenJiTheme {
         LoginContent(
             email = "johncena@gmail.com",
             password = "qwe123",
@@ -160,7 +156,7 @@ fun LoginContentFilledPreview() {
 @Preview(showBackground = true, name = "Login - Loading")
 @Composable
 fun LoginContentLoadingPreview() {
-    MaterialTheme {
+    OrenJiTheme {
         LoginContent(
             email = "johncena@gmail.com",
             password = "qwe123",
@@ -175,7 +171,7 @@ fun LoginContentLoadingPreview() {
 @Preview(showBackground = true, name = "Login - Error")
 @Composable
 fun LoginContentErrorPreview() {
-    MaterialTheme {
+    OrenJiTheme {
         LoginContent(
             email = "johncena@gmail.com",
             password = "wrongpass",

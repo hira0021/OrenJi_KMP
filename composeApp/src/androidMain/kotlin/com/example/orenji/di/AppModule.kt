@@ -1,10 +1,10 @@
 package com.example.orenji.di
 
 import android.content.Context
-import com.example.orenji.data.local.AndroidTokenStorage
-import com.example.orenji.data.local.TokenStorage
+import com.example.orenji.data.local.AndroidSessionStorage
+import com.example.orenji.data.local.SessionStorage
 import org.koin.dsl.module
 
 val androidModule = module {
-    single<TokenStorage> { AndroidTokenStorage(get<Context>()) }
+    single<SessionStorage> { AndroidSessionStorage(get<Context>()) }
 }

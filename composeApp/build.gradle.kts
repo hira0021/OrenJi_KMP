@@ -19,6 +19,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
+            implementation(libs.compose.material.icons)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -27,6 +28,7 @@ kotlin {
             implementation(libs.compose.ui)
             implementation(libs.compose.components.resources)
             implementation(libs.compose.uiToolingPreview)
+            implementation(libs.navigation.compose)
 
             // Lifecycle — KMP compatible
             implementation(libs.lifecycle.viewmodel)
