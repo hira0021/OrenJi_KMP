@@ -88,9 +88,11 @@ fun MainContent(
             composable(Screen.Map.route) { FamilyMapScreen() }
             composable(Screen.Feed.route) { FeedScreen() }
             composable(Screen.Family.route) { FamilyScreen() }
-            composable(Screen.Profile.route) { ProfileScreen(
-                onLogout = onLogout
-            ) }
+            composable(Screen.Profile.route) {
+                ProfileScreen(
+                    onLogout = onLogout
+                )
+            }
         }
     }
 }

@@ -11,7 +11,10 @@ class OrenjiApp : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@OrenjiApp)
-            modules(androidModule + sharedModule)
+            modules(
+                androidModule,
+                sharedModule
+            )
         }
     }
 }

@@ -20,6 +20,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
             implementation(libs.compose.material.icons)
+            implementation(libs.osmdroid)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)

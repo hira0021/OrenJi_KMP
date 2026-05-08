@@ -10,12 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.orenji.presentation.auth.AuthState
 import com.example.orenji.presentation.auth.AuthViewModel
 import com.example.orenji.ui.common.OrenJiButton
 import com.example.orenji.ui.common.OrenJiPasswordField
 import com.example.orenji.ui.common.OrenJiTextField
 import com.example.orenji.ui.theme.OrenJiTheme
+import com.example.orenji.ui.theme.TextPrimary
+import com.example.orenji.ui.theme.TextSecondary
 import orenji.composeapp.generated.resources.Res
 import orenji.composeapp.generated.resources.logo
 import org.jetbrains.compose.resources.painterResource
@@ -75,9 +78,10 @@ fun LoginContent(
             contentScale = ContentScale.Fit,
         )
         Text(
-            text = "Sign in to continue",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            text = "Sign in",
+            style = MaterialTheme.typography.labelLarge,
+            color = TextSecondary,
+            fontSize = 30.sp,
         )
 
         Spacer(Modifier.height(10.dp))
