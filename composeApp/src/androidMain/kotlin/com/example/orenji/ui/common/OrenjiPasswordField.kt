@@ -1,5 +1,6 @@
 package com.example.orenji.ui.common
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
@@ -9,7 +10,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.orenji.ui.theme.OrenJiTheme
 
 @Composable
 fun OrenJiPasswordField(
@@ -50,4 +53,41 @@ fun OrenJiPasswordField(
             cursorColor = MaterialTheme.colorScheme.primary,
         ),
     )
+}
+
+@Preview(showBackground = true, name = "PasswordField - Empty")
+@Composable
+private fun OrenJiPasswordFieldPreview() {
+    OrenJiTheme {
+        OrenJiPasswordField(
+            value = "",
+            onValueChange = {},
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "PasswordField - Filled")
+@Composable
+private fun OrenJiPasswordFieldFilledPreview() {
+    OrenJiTheme {
+        OrenJiPasswordField(
+            value = "mypassword123",
+            onValueChange = {},
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "PasswordField - Error")
+@Composable
+private fun OrenJiPasswordFieldErrorPreview() {
+    OrenJiTheme {
+        OrenJiPasswordField(
+            value = "wrong",
+            onValueChange = {},
+            modifier = Modifier.fillMaxWidth(),
+            isError = true,
+        )
+    }
 }

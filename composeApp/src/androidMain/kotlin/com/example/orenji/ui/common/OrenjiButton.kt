@@ -6,6 +6,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.orenji.ui.theme.OrenJiTheme
 
 @Composable
 fun OrenJiButton(
@@ -40,5 +42,40 @@ fun OrenJiButton(
                 style = MaterialTheme.typography.labelLarge,
             )
         }
+    }
+}
+
+@Preview(showBackground = true, name = "Button - Default")
+@Composable
+private fun OrenJiButtonPreview() {
+    OrenJiTheme {
+        OrenJiButton(
+            text = "Some Text",
+            onClick = {},
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Button - Loading")
+@Composable
+private fun OrenJiButtonLoadingPreview() {
+    OrenJiTheme {
+        OrenJiButton(
+            text = "Some Text",
+            onClick = {},
+            isLoading = true,
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Button - Disabled")
+@Composable
+private fun OrenJiButtonDisabledPreview() {
+    OrenJiTheme {
+        OrenJiButton(
+            text = "Some Text",
+            onClick = {},
+            enabled = false,
+        )
     }
 }
