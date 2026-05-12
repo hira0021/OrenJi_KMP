@@ -13,11 +13,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.orenji.presentation.auth.AuthState
 import com.example.orenji.presentation.auth.AuthViewModel
-import com.example.orenji.ui.common.OrenJiButton
+import com.example.orenji.ui.common.OrenJiPrimaryButton
 import com.example.orenji.ui.common.OrenJiPasswordField
 import com.example.orenji.ui.common.OrenJiTextField
 import com.example.orenji.ui.theme.OrenJiTheme
-import com.example.orenji.ui.theme.TextPrimary
 import com.example.orenji.ui.theme.TextSecondary
 import orenji.composeapp.generated.resources.Res
 import orenji.composeapp.generated.resources.logo
@@ -119,7 +118,7 @@ fun LoginContent(
 
         Spacer(Modifier.height(14.dp))
 
-        OrenJiButton(
+        OrenJiPrimaryButton(
             text = "Login",
             onClick = onLoginClick,
             isLoading = state.isLoading,

@@ -6,12 +6,12 @@ import android.content.Context
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -21,6 +21,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.example.orenji.presentation.map.FamilyMapState
 import com.example.orenji.presentation.map.FamilyMapViewModel
+import com.example.orenji.ui.common.OrenJiPrimaryButton
 import com.example.orenji.ui.theme.OrenJiTheme
 import org.koin.compose.viewmodel.koinViewModel
 import org.osmdroid.config.Configuration
@@ -73,6 +74,7 @@ fun FamilyMapContent(
                     longitude = state.userLongitude,
                 )
             }
+
             state.isRequestingPermission -> {
                 Box(
                     modifier = Modifier.fillMaxSize(),
@@ -83,6 +85,7 @@ fun FamilyMapContent(
                     )
                 }
             }
+
             else -> {
                 PermissionDeniedContent(
                     onRequestPermission = onRequestPermission,
@@ -178,16 +181,15 @@ fun PermissionDeniedContent(
                 text = "OrenJi needs your location to show family members on the map.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
             )
-            Button(
+            OrenJiPrimaryButton(
+                text = "Grant Permission",
                 onClick = onRequestPermission,
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                ),
-            ) {
-                Text("Grant Permission")
-            }
+                modifier = Modifier
+                    .width(180.dp)
+                    .height(42.dp),
+            )
         }
     }
 }

@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import com.example.orenji.domain.model.User
 import com.example.orenji.presentation.profile.ProfileState
 import com.example.orenji.presentation.profile.ProfileViewModel
-import com.example.orenji.ui.common.OrenJiButton
+import com.example.orenji.ui.common.OrenJiPrimaryButton
 import com.example.orenji.ui.theme.OrenJiTheme
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -57,7 +57,7 @@ fun ProfileContent(
 
         Spacer(Modifier.height(40.dp))
 
-        OrenJiButton(
+        OrenJiPrimaryButton(
             text = "Logout",
             onClick = onLogout,
         )

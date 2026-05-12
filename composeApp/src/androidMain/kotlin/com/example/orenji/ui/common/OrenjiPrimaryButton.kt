@@ -10,7 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.orenji.ui.theme.OrenJiTheme
 
 @Composable
-fun OrenJiButton(
+fun OrenJiPrimaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -19,9 +19,7 @@ fun OrenJiButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier
-            .fillMaxWidth()
-            .height(52.dp),
+        modifier = modifier.height(52.dp),
         enabled = enabled && !isLoading,
         shape = RoundedCornerShape(8.dp),
         colors = ButtonDefaults.buttonColors(
@@ -47,9 +45,9 @@ fun OrenJiButton(
 
 @Preview(showBackground = true, name = "Button - Default")
 @Composable
-private fun OrenJiButtonPreview() {
+private fun OrenJiPrimaryButtonPreview() {
     OrenJiTheme {
-        OrenJiButton(
+        OrenJiPrimaryButton(
             text = "Some Text",
             onClick = {},
         )
@@ -58,9 +56,9 @@ private fun OrenJiButtonPreview() {
 
 @Preview(showBackground = true, name = "Button - Loading")
 @Composable
-private fun OrenJiButtonLoadingPreview() {
+private fun OrenJiPrimaryButtonLoadingPreview() {
     OrenJiTheme {
-        OrenJiButton(
+        OrenJiPrimaryButton(
             text = "Some Text",
             onClick = {},
             isLoading = true,
@@ -70,9 +68,9 @@ private fun OrenJiButtonLoadingPreview() {
 
 @Preview(showBackground = true, name = "Button - Disabled")
 @Composable
-private fun OrenJiButtonDisabledPreview() {
+private fun OrenJiPrimaryButtonDisabledPreview() {
     OrenJiTheme {
-        OrenJiButton(
+        OrenJiPrimaryButton(
             text = "Some Text",
             onClick = {},
             enabled = false,
