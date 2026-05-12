@@ -14,7 +14,7 @@ sealed class Screen(val route: String) {
     // Main tabs
     object Map : Screen("map")
     object Feed : Screen("feed")
-    object Family : Screen("family")
+    object Family : Screen("link")
     object Profile : Screen("profile")
 }
 
@@ -27,6 +27,6 @@ data class BottomNavItem(
 val bottomNavItems = listOf(
     BottomNavItem(Screen.Map, "Map", Icons.Filled.Map),
     BottomNavItem(Screen.Feed, "Feed", Icons.Filled.Home),
-    BottomNavItem(Screen.Family, "Family", Icons.Filled.FamilyRestroom),
+    BottomNavItem(Screen.Family, "Link", Icons.Filled.FamilyRestroom),
     BottomNavItem(Screen.Profile, "Profile", Icons.Filled.Person),
 )

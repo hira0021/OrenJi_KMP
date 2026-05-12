@@ -16,8 +16,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.orenji.navigation.Screen
 import com.example.orenji.navigation.bottomNavItems
-import com.example.orenji.ui.family.FamilyScreen
 import com.example.orenji.ui.feed.FeedScreen
+import com.example.orenji.ui.link.LinkScreen
 import com.example.orenji.ui.map.FamilyMapScreen
 import com.example.orenji.ui.profile.ProfileScreen
 
@@ -87,7 +87,7 @@ fun MainContent(
         ) {
             composable(Screen.Map.route) { FamilyMapScreen() }
             composable(Screen.Feed.route) { FeedScreen() }
-            composable(Screen.Family.route) { FamilyScreen() }
+            composable(Screen.Family.route) { LinkScreen() }
             composable(Screen.Profile.route) {
                 ProfileScreen(
                     onLogout = onLogout
